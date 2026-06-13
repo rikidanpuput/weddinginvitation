@@ -3,23 +3,28 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>Ricky & Puput Wedding</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
+/* =========================
+   ROOT
+========================= */
+
 :root{
-    --burgundy:#6D1F32;
-    --green:#1E3A34;
-    --gold:#D4AF37;
-    --white:#F8F5F2;
-    --dark:#111;
-    --shadow:0 10px 35px rgba(0,0,0,.08);
+    --glass:rgba(255,255,255,.08);
 }
+
+/* =========================
+   GLOBAL
+========================= */
 
 *{
     margin:0;
@@ -32,328 +37,443 @@ html{
 }
 
 body{
-    font-family:'Poppins',sans-serif;
-    background:var(--white);
-    color:#222;
+    font-family:'Montserrat',sans-serif;
+    background:black;
+    color:white;
     overflow-x:hidden;
-    line-height:1.8;
 }
 
-/* SCROLLBAR */
+/* =========================
+   VIDEO BACKGROUND
+========================= */
 
-::-webkit-scrollbar{
-    width:10px;
-}
-
-::-webkit-scrollbar-thumb{
-    background:var(--burgundy);
-    border-radius:20px;
-}
-
-/* GENERAL */
-
-section{
-    padding:100px clamp(20px,5vw,90px);
-}
-
-.title{
-    text-align:center;
-    margin-bottom:60px;
-}
-
-.title h2{
-    font-size:clamp(40px,6vw,70px);
-    font-family:'Cormorant Garamond',serif;
-    color:var(--burgundy);
-    margin-bottom:10px;
-    line-height:1.1;
-}
-
-.title p{
-    color:#666;
-}
-
-/* LOADER */
-
-#loader{
+.video-background{
     position:fixed;
     inset:0;
-    background:#111;
-    z-index:99999;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    transition:1s;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:-3;
+    background:black;
 }
 
-.loader-content{
-    text-align:center;
-    color:white;
+.video-background iframe{
+    position:absolute;
+    top:50%;
+    left:50%;
+
+    width:100vw;
+    height:177.77vw;
+
+    min-height:100vh;
+    min-width:56.25vh;
+
+    transform:translate(-50%, -50%);
+
+    pointer-events:none;
+
+    filter:
+    brightness(.35)
+    contrast(1.05)
+    saturate(.92);
 }
 
-.loader-content h1{
-    font-size:72px;
-    font-family:'Cormorant Garamond',serif;
+/* =========================
+   OVERLAY
+========================= */
+
+.video-overlay{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.38),
+        rgba(0,0,0,.72)
+    );
 }
 
-.loader-content p{
-    margin-top:10px;
-    letter-spacing:3px;
+/* =========================
+   PARTICLES
+========================= */
+
+.particles{
+    position:fixed;
+    inset:0;
+    overflow:hidden;
+    z-index:-1;
 }
 
-/* HERO */
+.particles span{
+    position:absolute;
+    width:3px;
+    height:3px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.10);
+
+    animation:float 16s linear infinite;
+}
+
+.particles span:nth-child(1){
+    left:10%;
+    animation-duration:12s;
+}
+
+.particles span:nth-child(2){
+    left:25%;
+    animation-duration:17s;
+}
+
+.particles span:nth-child(3){
+    left:40%;
+    animation-duration:14s;
+}
+
+.particles span:nth-child(4){
+    left:60%;
+    animation-duration:18s;
+}
+
+.particles span:nth-child(5){
+    left:80%;
+    animation-duration:15s;
+}
+
+@keyframes float{
+
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+
+    to{
+        transform:translateY(-10vh);
+        opacity:1;
+    }
+
+}
+
+/* =========================
+   SECTION
+========================= */
+
+section{
+    padding:120px 22px;
+    position:relative;
+}
+
+.container{
+    max-width:1150px;
+    margin:auto;
+}
+
+/* =========================
+   GLASS EFFECT
+========================= */
+
+.glass{
+    background:rgba(0,0,0,.24);
+
+    border:1px solid rgba(255,255,255,.06);
+
+    backdrop-filter:blur(14px);
+
+    border-radius:30px;
+}
+
+/* =========================
+   HERO
+========================= */
 
 .hero{
     min-height:100vh;
-    background:
-    linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.6)),
-    url('https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1920&auto=format&fit=crop');
-    background-size:cover;
-    background-position:center;
+
     display:flex;
     justify-content:center;
     align-items:center;
-    text-align:center;
-    position:relative;
-    padding:30px;
-}
 
-.hero::after{
-    content:'';
-    position:absolute;
-    inset:0;
-    backdrop-filter:blur(1px);
+    text-align:center;
 }
 
 .hero-content{
-    position:relative;
-    z-index:2;
-    color:white;
-    max-width:900px;
-    animation:fadeUp 1.5s ease;
+    max-width:1000px;
+    padding:40px;
 }
 
 .hero-content p{
-    letter-spacing:4px;
-    font-size:14px;
+    color:rgba(255,255,255,.62);
+
+    letter-spacing:5px;
+
+    font-size:12px;
+
+    margin-bottom:18px;
+
+    text-transform:uppercase;
 }
 
-.hero h1{
-    font-size:clamp(60px,12vw,130px);
+.hero-content h1{
     font-family:'Cormorant Garamond',serif;
+
+    font-size:clamp(72px,12vw,160px);
+
+    font-weight:500;
+
     line-height:1;
-    margin:20px 0;
+
+    margin-bottom:18px;
+
+    color:rgba(255,255,255,.92);
+
+    text-shadow:
+    0 10px 40px rgba(0,0,0,.4);
+}
+
+.date{
+    color:rgba(255,255,255,.55);
+
+    letter-spacing:6px;
+
+    font-size:13px;
 }
 
 .hero-line{
     width:120px;
     height:1px;
-    background:rgba(255,255,255,.5);
-    margin:30px auto 20px;
+
+    background:rgba(255,255,255,.20);
+
+    margin:30px auto;
 }
 
 .hero-text{
-    color:#eee;
-    font-size:14px;
-    letter-spacing:2px;
+    color:rgba(255,255,255,.50);
+
+    font-size:13px;
+
+    letter-spacing:3px;
 }
 
-/* MUSIC BUTTON */
+/* =========================
+   HERO COUNTDOWN
+========================= */
 
-.music-btn{
-    position:fixed;
-    right:25px;
-    bottom:25px;
-    width:58px;
-    height:58px;
-    border-radius:50%;
-    background:var(--burgundy);
-    color:white;
+.hero-countdown{
+    margin-top:38px;
+
     display:flex;
     justify-content:center;
-    align-items:center;
-    cursor:pointer;
-    z-index:999;
-    font-size:22px;
-    box-shadow:0 10px 25px rgba(0,0,0,.25);
-    animation:float 3s infinite ease-in-out;
+    gap:18px;
+
+    flex-wrap:wrap;
 }
 
-/* STORY */
+.count-item{
+    width:95px;
+    height:95px;
 
-.story-container{
+    border-radius:24px;
+
+    background:rgba(255,255,255,.06);
+
+    border:1px solid rgba(255,255,255,.05);
+
+    backdrop-filter:blur(10px);
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    transition:.35s ease;
+}
+
+.count-item:hover{
+    transform:translateY(-4px);
+
+    background:rgba(255,255,255,.08);
+}
+
+.count-item h3{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:34px;
+
+    font-weight:600;
+
+    line-height:1;
+
+    color:rgba(255,255,255,.92);
+}
+
+.count-item span{
+    margin-top:6px;
+
+    font-size:11px;
+
+    letter-spacing:2px;
+
+    color:rgba(255,255,255,.42);
+
+    text-transform:uppercase;
+}
+
+/* =========================
+   TITLES
+========================= */
+
+.section-title{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.section-title h2{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:clamp(42px,6vw,70px);
+
+    font-weight:500;
+
+    margin-bottom:12px;
+
+    color:rgba(255,255,255,.92);
+}
+
+.section-title p{
+    color:rgba(255,255,255,.5);
+}
+
+/* =========================
+   STORY
+========================= */
+
+.story-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
     gap:25px;
 }
 
-.story-box{
-    background:white;
+.story-card{
     padding:35px;
-    border-radius:28px;
-    box-shadow:var(--shadow);
-    transition:.35s ease;
+    transition:.4s ease;
 }
 
-.story-box:hover{
+.story-card:hover{
     transform:translateY(-6px);
 }
 
-.story-box h3{
-    font-size:38px;
-    margin-bottom:15px;
-    color:var(--burgundy);
+.story-card h3{
     font-family:'Cormorant Garamond',serif;
+
+    font-size:38px;
+
+    margin-bottom:14px;
 }
 
-/* AYAT */
+.story-card p{
+    color:rgba(255,255,255,.62);
 
-.ayat{
-    background:linear-gradient(135deg,var(--green),#284f46);
-    color:white;
-    text-align:center;
+    line-height:1.9;
 }
+
+/* =========================
+   AYAT
+========================= */
 
 .ayat-box{
     max-width:1000px;
     margin:auto;
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(12px);
-    padding:50px 35px;
-    border-radius:30px;
+
+    padding:55px 35px;
+
+    text-align:center;
 }
 
 .arabic{
-    font-size:clamp(28px,4vw,42px);
+    font-size:clamp(28px,4vw,46px);
+
     line-height:2.1;
-    font-family:'Cormorant Garamond',serif;
-    margin-bottom:30px;
+
+    margin-bottom:35px;
+
+    color:rgba(255,255,255,.92);
 }
 
 .latin{
+    color:rgba(255,255,255,.48);
+
     font-style:italic;
-    color:#ddd;
+
+    line-height:2;
+
     margin-bottom:30px;
 }
 
 .translation{
-    color:#fff;
-    font-size:16px;
-    max-width:900px;
-    margin:auto;
+    color:rgba(255,255,255,.68);
+
+    line-height:2;
 }
 
-/* COUNTDOWN */
-
-.countdown{
-    background:#faf7f4;
-}
-
-.countdown-wrap{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
-    gap:20px;
-    max-width:900px;
-    margin:auto;
-}
-
-.count-box{
-    background:white;
-    padding:40px 20px;
-    border-radius:28px;
-    text-align:center;
-    box-shadow:var(--shadow);
-}
-
-.count-box h3{
-    font-size:60px;
-    color:var(--burgundy);
-    font-family:'Cormorant Garamond',serif;
-}
-
-/* GALLERY */
-
-.gallery{
-    background:#faf7f4;
-}
+/* =========================
+   GALLERY
+========================= */
 
 .gallery-grid{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
     gap:18px;
 }
 
 .gallery-grid img{
     width:100%;
-    aspect-ratio:1/1.2;
+
+    aspect-ratio:1/1.25;
+
     object-fit:cover;
+
     border-radius:24px;
-    transition:.4s ease;
+
+    transition:.45s ease;
 }
 
 .gallery-grid img:hover{
     transform:scale(1.03);
 }
 
-/* VIDEO */
-
-.video{
-    background:linear-gradient(135deg,var(--burgundy),var(--green));
-    color:white;
-}
-
-.video .title h2{
-    color:white;
-}
-
-.video-box{
-    max-width:1000px;
-    margin:auto;
-    border-radius:28px;
-    overflow:hidden;
-    box-shadow:0 10px 40px rgba(0,0,0,.3);
-}
-
-.video-box iframe{
-    width:100%;
-    aspect-ratio:16/9;
-    border:none;
-}
-
-/* RSVP */
-
-.rsvp{
-    background:#111;
-    color:white;
-}
-
-.rsvp .title h2{
-    color:white;
-}
+/* =========================
+   RSVP
+========================= */
 
 .form-box{
-    width:100%;
     max-width:760px;
     margin:auto;
+
     padding:35px;
-    border-radius:30px;
-    background:rgba(255,255,255,.05);
-    border:1px solid rgba(255,255,255,.08);
-    backdrop-filter:blur(12px);
 }
 
 input,
 textarea,
 select{
     width:100%;
-    padding:17px;
+
+    padding:18px;
+
+    background:rgba(255,255,255,.06);
+
     border:none;
     outline:none;
-    border-radius:16px;
+
+    border-radius:18px;
+
+    color:white;
+
     margin-bottom:18px;
-    font-size:15px;
-    font-family:'Poppins',sans-serif;
+
+    font-family:'Montserrat',sans-serif;
 }
 
 textarea{
@@ -361,81 +481,145 @@ textarea{
     resize:none;
 }
 
+input::placeholder,
+textarea::placeholder{
+    color:rgba(255,255,255,.35);
+}
+
 button{
     width:100%;
+
     padding:18px;
+
     border:none;
+
     border-radius:18px;
-    background:var(--gold);
+
+    background:rgba(255,255,255,.12);
+
     color:white;
-    font-weight:600;
+
     cursor:pointer;
-    transition:.3s ease;
+
+    transition:.35s ease;
 }
 
 button:hover{
-    opacity:.9;
+    background:rgba(255,255,255,.18);
 }
 
 /* MESSAGE */
 
 .message-list{
-    margin-top:35px;
+    margin-top:30px;
     display:grid;
     gap:18px;
 }
 
 .message-card{
-    background:white;
-    color:#222;
     padding:24px;
-    border-radius:22px;
+
+    border-radius:20px;
+
+    background:rgba(255,255,255,.05);
 }
 
-.message-card h4{
-    color:var(--burgundy);
-    margin-bottom:8px;
+.message-card p{
+    color:rgba(255,255,255,.62);
+
+    margin-top:10px;
 }
 
 .status{
     display:inline-block;
+
     margin-top:14px;
-    padding:7px 16px;
+
+    padding:7px 14px;
+
     border-radius:999px;
-    font-size:13px;
-    color:white;
+
+    font-size:12px;
 }
 
 .hadir{
-    background:green;
+    background:#23492d;
 }
 
 .tidak{
-    background:#999;
+    background:#4b2d2d;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+========================= */
 
 footer{
-    background:#000;
-    color:white;
     text-align:center;
-    padding:80px 20px;
+    padding:100px 20px;
 }
 
 footer h2{
-    font-size:clamp(45px,8vw,72px);
-    margin-bottom:15px;
     font-family:'Cormorant Garamond',serif;
+
+    font-size:clamp(52px,8vw,80px);
+
+    margin-bottom:18px;
 }
 
 footer p{
+    color:rgba(255,255,255,.55);
+
     max-width:700px;
+
     margin:auto;
-    color:#ddd;
+
+    line-height:2;
 }
 
-/* ANIMATION */
+/* =========================
+   MUSIC BUTTON
+========================= */
+
+.music-btn{
+    position:fixed;
+
+    right:25px;
+    bottom:25px;
+
+    width:56px;
+    height:56px;
+
+    border-radius:50%;
+
+    background:rgba(255,255,255,.08);
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+    z-index:999;
+
+    transition:.35s ease;
+}
+
+.music-btn:hover{
+    transform:scale(1.08);
+}
+
+/* =========================
+   REVEAL
+========================= */
 
 .reveal{
     opacity:0;
@@ -448,55 +632,35 @@ footer p{
     transform:translateY(0);
 }
 
-@keyframes fadeUp{
-    from{
-        opacity:0;
-        transform:translateY(40px);
-    }
-    to{
-        opacity:1;
-        transform:translateY(0);
-    }
-}
-
-@keyframes float{
-    0%,100%{
-        transform:translateY(0);
-    }
-    50%{
-        transform:translateY(-8px);
-    }
-}
-
-/* MOBILE */
+/* =========================
+   MOBILE
+========================= */
 
 @media(max-width:768px){
 
-section{
-    padding:80px 20px;
+.hero-content h1{
+    font-size:62px;
 }
 
-.hero-content p{
-    letter-spacing:2px;
-    font-size:12px;
+.video-background iframe{
+    height:190vw;
 }
 
-.story-box,
-.form-box,
-.ayat-box{
-    padding:24px;
+.hero-countdown{
+    gap:12px;
 }
 
-.gallery-grid{
-    grid-template-columns:1fr 1fr;
+.count-item{
+    width:78px;
+    height:78px;
 }
 
-.loader-content h1{
-    font-size:48px;
+.count-item h3{
+    font-size:28px;
 }
 
-.count-box h3{
-    font-size:42px;
+.section-title h2{
+    font-size:46px;
 }
 
 .arabic{
@@ -505,18 +669,25 @@ section{
 
 }
 
-@media(max-width:520px){
+@media(max-width:480px){
 
-.hero h1{
+.hero-content h1{
     font-size:52px;
 }
 
-.title h2{
-    font-size:38px;
+.video-background iframe{
+    height:210vw;
 }
 
-.gallery-grid{
-    grid-template-columns:1fr;
+.count-item{
+    width:70px;
+    height:70px;
+
+    border-radius:18px;
+}
+
+.count-item h3{
+    font-size:24px;
 }
 
 .music-btn{
@@ -531,23 +702,43 @@ section{
 </head>
 <body>
 
-<!-- LOADER -->
+<!-- =========================
+     VIDEO BACKGROUND
+========================= -->
 
-<div id="loader">
+<div class="video-background">
 
-<div class="loader-content">
-
-<h1>Ricky & Puput</h1>
-
-<p>Loading Invitation...</p>
+<iframe
+src="https://www.youtube.com/embed/tmiynJuZt3w?autoplay=1&mute=1&controls=0&loop=1&playlist=tmiynJuZt3w&playsinline=1&rel=0"
+title="Wedding Video"
+frameborder="0"
+allow="autoplay; encrypted-media"
+allowfullscreen>
+</iframe>
 
 </div>
 
+<div class="video-overlay"></div>
+
+<!-- =========================
+     PARTICLES
+========================= -->
+
+<div class="particles">
+
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+<span></span>
+
 </div>
 
-<!-- HERO -->
+<!-- =========================
+     HERO
+========================= -->
 
-<section class="hero reveal">
+<section class="hero">
 
 <div class="hero-content">
 
@@ -555,26 +746,71 @@ section{
 
 <h1>Ricky & Puput</h1>
 
-<p>11 OCTOBER 2026</p>
+<div class="date">
+11 OCTOBER 2026
+</div>
 
 <div class="hero-line"></div>
 
-<span class="hero-text">
-Together With Their Families
-</span>
+<div class="hero-text">
+Counting the days to forever
+</div>
+
+<!-- COUNTDOWN -->
+
+<div class="hero-countdown">
+
+<div class="count-item">
+
+<h3 id="days">00</h3>
+
+<span>Days</span>
+
+</div>
+
+<div class="count-item">
+
+<h3 id="hours">00</h3>
+
+<span>Hours</span>
+
+</div>
+
+<div class="count-item">
+
+<h3 id="minutes">00</h3>
+
+<span>Minutes</span>
+
+</div>
+
+<div class="count-item">
+
+<h3 id="seconds">00</h3>
+
+<span>Seconds</span>
+
+</div>
+
+</div>
 
 </div>
 
 </section>
 
-<!-- STORY -->
+<!-- =========================
+     STORY
+========================= -->
 
-<section class="story reveal">
+<section class="reveal">
 
-<div class="title">
-    <h2>
+<div class="container">
+
+<div class="section-title">
+
+    <p>
       Pada akhirnya, setiap perjalanan menemukan muaranya.
-    </h2>
+    </p>
 
     <p>
       Di antara sekian banyak kemungkinan, Allah SWT mempertemukan kami 
@@ -601,73 +837,68 @@ Together With Their Families
 
 </div>
 
-</section>
-
-<!-- AYAT -->
-
-<section class="ayat reveal">
-
-<div class="title">
-<h2 style="color:white;">Q.S Ar-Rum : 21</h2>
-<p style="color:#ddd;">A beautiful reminder about love and mercy</p>
 </div>
 
-<div class="ayat-box">
+</div>
+
+</section>
+
+<!-- =========================
+     AYAT
+========================= -->
+
+<section class="reveal">
+
+<div class="container">
+
+<div class="section-title">
+
+<h2>Q.S Ar-Rum : 21</h2>
+
+<p>A beautiful reminder about love and mercy</p>
+
+</div>
+
+<div class="ayat-box glass">
 
 <div class="arabic">
+
 وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةً ۗاِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ
+
+</div>
+
+<div class="latin">
+
+(Wa min āyātihī an khalaqa lakum min anfusikum azwājal litaskunū ilaihā wa ja'ala bainakum mawaddatan wa raḥmah)
+
 </div>
 
 <div class="translation">
-"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya, dan Dia menjadikan di antaramu rasa cinta dan kasih sayang. Sungguh, pada yang demikian itu benar-benar terdapat tanda-tanda (kebesaran Allah) bagi kaum yang berpikir."
+
+"Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri."
+
+</div>
+
 </div>
 
 </div>
 
 </section>
 
-<!-- COUNTDOWN -->
+<!-- =========================
+     GALLERY
+========================= -->
 
-<section class="countdown reveal">
+<section class="reveal">
 
-<div class="title">
-<h2>Countdown To Forever</h2>
-<p>We can’t wait to celebrate with you</p>
-</div>
+<div class="container">
 
-<div class="countdown-wrap">
+<div class="section-title">
 
-<div class="count-box">
-<h3 id="days">00</h3>
-<span>Days</span>
-</div>
-
-<div class="count-box">
-<h3 id="hours">00</h3>
-<span>Hours</span>
-</div>
-
-<div class="count-box">
-<h3 id="minutes">00</h3>
-<span>Minutes</span>
-</div>
-
-<div class="count-box">
-<h3 id="seconds">00</h3>
-<span>Seconds</span>
-</div>
-
-</div>
-
-</section>
-
-<!-- GALLERY -->
-
-<section class="gallery reveal">
-
-<div class="title">
 <h2>Gallery</h2>
-<p>Captured moments of our happiness</p>
+
+<p>Captured moments of happiness</p>
+
 </div>
 
 <div class="gallery-grid">
@@ -682,45 +913,38 @@ Together With Their Families
 
 </div>
 
-</section>
-
-<!-- VIDEO -->
-
-<section class="video reveal">
-
-<div class="title">
-<h2>Wedding Footage</h2>
-<p>Watch our prewedding moments</p>
-</div>
-
-<div class="video-box">
-
-<iframe 
-src="https://www.youtube.com/embed/ScMzIvxBSi4"
-allowfullscreen>
-</iframe>
-
 </div>
 
 </section>
 
-<!-- RSVP -->
+<!-- =========================
+     RSVP
+========================= -->
 
-<section class="rsvp reveal">
+<section class="reveal">
 
-<div class="title">
+<div class="container">
+
+<div class="section-title">
+
 <h2>RSVP & Wishes</h2>
+
 <p>Send your blessings and prayers</p>
+
 </div>
 
-<div class="form-box">
+<div class="form-box glass">
 
 <input type="text" id="name" placeholder="Your Name">
 
 <select id="attendance">
+
 <option value="">Attendance Confirmation</option>
+
 <option value="Hadir">I Will Attend</option>
+
 <option value="Tidak Hadir">Sorry, Can't Attend</option>
+
 </select>
 
 <textarea id="message" placeholder="Write your wishes..."></textarea>
@@ -733,9 +957,13 @@ Send Wishes
 
 </div>
 
+</div>
+
 </section>
 
-<!-- FOOTER -->
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer>
 
@@ -747,35 +975,25 @@ It would be a great honor and happiness for us if you could attend and bless our
 
 </footer>
 
-<!-- MUSIC -->
+<!-- =========================
+     MUSIC BUTTON
+========================= -->
 
 <div class="music-btn" onclick="toggleMusic()">
-🎵
+♫
 </div>
 
+<!-- =========================
+     MUSIC
+========================= -->
+
 <audio id="bgMusic" loop>
-<source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mp3">
+
+<source src="music/music.mp3" type="audio/mp3">
+
 </audio>
 
 <script>
-
-/* LOADER */
-
-window.addEventListener('load',()=>{
-
-    setTimeout(()=>{
-
-        document.getElementById('loader').style.opacity='0';
-
-        setTimeout(()=>{
-
-            document.getElementById('loader').style.display='none';
-
-        },1000);
-
-    },1800);
-
-});
 
 /* MUSIC */
 
@@ -809,15 +1027,17 @@ setInterval(()=>{
 
     const distance = weddingDate - now;
 
-    const days = Math.floor(distance / (1000*60*60*24));
-    const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-    const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
-    const seconds = Math.floor((distance % (1000*60)) / 1000);
+    document.getElementById('days').innerHTML =
+    Math.floor(distance / (1000*60*60*24));
 
-    document.getElementById('days').innerHTML = days;
-    document.getElementById('hours').innerHTML = hours;
-    document.getElementById('minutes').innerHTML = minutes;
-    document.getElementById('seconds').innerHTML = seconds;
+    document.getElementById('hours').innerHTML =
+    Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+
+    document.getElementById('minutes').innerHTML =
+    Math.floor((distance % (1000*60*60)) / (1000*60));
+
+    document.getElementById('seconds').innerHTML =
+    Math.floor((distance % (1000*60)) / 1000);
 
 },1000);
 
@@ -825,24 +1045,33 @@ setInterval(()=>{
 
 function addMessage(){
 
-    const name = document.getElementById('name').value;
-    const attendance = document.getElementById('attendance').value;
-    const message = document.getElementById('message').value;
+    const name =
+    document.getElementById('name').value;
+
+    const attendance =
+    document.getElementById('attendance').value;
+
+    const message =
+    document.getElementById('message').value;
 
     if(name === '' || attendance === '' || message === ''){
 
         alert('Please complete all fields');
+
         return;
 
     }
 
-    const messageList = document.getElementById('messageList');
+    const list =
+    document.getElementById('messageList');
 
-    const div = document.createElement('div');
+    const div =
+    document.createElement('div');
 
     div.classList.add('message-card');
 
-    let statusClass = attendance === 'Hadir'
+    let statusClass =
+    attendance === 'Hadir'
     ? 'hadir'
     : 'tidak';
 
@@ -858,7 +1087,7 @@ function addMessage(){
 
     `;
 
-    messageList.prepend(div);
+    list.prepend(div);
 
     document.getElementById('name').value = '';
     document.getElementById('attendance').value = '';
@@ -868,17 +1097,17 @@ function addMessage(){
 
 /* REVEAL */
 
-const reveals = document.querySelectorAll('.reveal');
+const reveals =
+document.querySelectorAll('.reveal');
 
 window.addEventListener('scroll',()=>{
 
     reveals.forEach((el)=>{
 
-        const top = el.getBoundingClientRect().top;
+        const top =
+        el.getBoundingClientRect().top;
 
-        const windowHeight = window.innerHeight;
-
-        if(top < windowHeight - 100){
+        if(top < window.innerHeight - 100){
 
             el.classList.add('active');
 
