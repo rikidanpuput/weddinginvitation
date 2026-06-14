@@ -1,472 +1,471 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Ricky & Puput Wedding</title>
+<title>Puput & Riki Wedding</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
-:root{
-    --white: rgba(255,255,255,.92);
-    --soft: rgba(255,255,255,.72);
-    --fade: rgba(255,255,255,.48);
-}
-
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+margin:0;
+padding:0;
+box-sizing:border-box;
 }
 
 html{
-    scroll-behavior:smooth;
+scroll-behavior:smooth;
 }
 
 body{
-    font-family:'Montserrat',sans-serif;
-    background:black;
-    color:white;
-    overflow-x:hidden;
+font-family:'Montserrat',sans-serif;
+background:black;
+color:white;
+overflow-x:hidden;
 }
 
-/* VIDEO BACKGROUND */
+/* VIDEO BG */
 
 .video-background{
-    position:fixed;
-    inset:0;
-    z-index:-3;
-    overflow:hidden;
+position:fixed;
+inset:0;
+z-index:-5;
+overflow:hidden;
 }
 
 .video-background iframe{
-    position:absolute;
-    top:50%;
-    left:50%;
-    width:100vw;
-    height:177.77vw;
-    min-width:56.25vh;
-    min-height:100vh;
-    transform:translate(-50%,-50%);
-    pointer-events:none;
-    filter:brightness(.35) contrast(1.05);
+position:absolute;
+top:50%;
+left:50%;
+width:100vw;
+height:177.77vw;
+min-width:56.25vh;
+min-height:100vh;
+transform:translate(-50%,-50%);
+pointer-events:none;
+filter:brightness(.35);
 }
-
-/* OVERLAY */
 
 .video-overlay{
-    position:fixed;
-    inset:0;
-    z-index:-2;
-    background:linear-gradient(
-        rgba(0,0,0,.35),
-        rgba(0,0,0,.75)
-    );
-}
-
-/* PARTICLES */
-
-.particles{
-    position:fixed;
-    inset:0;
-    z-index:-1;
-    overflow:hidden;
-}
-
-.particles span{
-    position:absolute;
-    width:3px;
-    height:3px;
-    border-radius:50%;
-    background:rgba(255,255,255,.1);
-    animation:float 15s linear infinite;
-}
-
-.particles span:nth-child(1){left:10%;}
-.particles span:nth-child(2){left:25%;}
-.particles span:nth-child(3){left:45%;}
-.particles span:nth-child(4){left:65%;}
-.particles span:nth-child(5){left:85%;}
-
-@keyframes float{
-    from{
-        transform:translateY(100vh);
-        opacity:0;
-    }
-    to{
-        transform:translateY(-10vh);
-        opacity:1;
-    }
+position:fixed;
+inset:0;
+background:rgba(0,0,0,.55);
+z-index:-4;
 }
 
 /* SECTION */
 
 section{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    padding:100px 25px;
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:80px 25px;
+position:relative;
+}
+
+.section-bg{
+position:absolute;
+inset:0;
+background-size:cover;
+background-position:center;
+opacity:.28;
+z-index:-2;
 }
 
 .container{
-    max-width:950px;
-    margin:auto;
+max-width:950px;
+margin:auto;
 }
 
-/* TYPOGRAPHY */
-
 .small-title{
-    font-size:14px;
-    letter-spacing:4px;
-    text-transform:uppercase;
-    color:var(--soft);
-    margin-bottom:20px;
+font-size:15px;
+letter-spacing:4px;
+text-transform:uppercase;
+margin-bottom:20px;
 }
 
 .main-title{
-    font-family:'Cormorant Garamond',serif;
-    font-size:clamp(60px,10vw,120px);
-    font-weight:500;
-    line-height:1;
-    margin-bottom:20px;
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(60px,10vw,120px);
+line-height:1;
+margin-bottom:20px;
 }
 
 .date{
-    font-size:22px;
-    color:var(--soft);
+font-size:24px;
+margin-bottom:25px;
 }
 
-.big-heading{
-    font-family:'Cormorant Garamond',serif;
-    font-size:clamp(52px,8vw,90px);
-    font-weight:500;
-    margin-bottom:25px;
+.big-title{
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(50px,8vw,90px);
+margin-bottom:20px;
 }
 
-.text-block{
-    font-family:'Cormorant Garamond',serif;
-    font-size:30px;
-    line-height:1.5;
-    color:var(--white);
+.text{
+font-size:20px;
+line-height:1.8;
+max-width:850px;
+margin:auto;
 }
 
-.reference{
-    margin-top:25px;
-    font-size:24px;
-    color:var(--soft);
+.button{
+margin-top:30px;
+padding:15px 40px;
+border-radius:999px;
+border:1px solid rgba(255,255,255,.25);
+background:rgba(255,255,255,.08);
+color:white;
+cursor:pointer;
+backdrop-filter:blur(10px);
 }
 
 /* COUNTDOWN */
 
-.hero-countdown{
-    margin-top:40px;
-    display:flex;
-    justify-content:center;
-    gap:25px;
-    flex-wrap:wrap;
+.countdown{
+display:flex;
+justify-content:center;
+gap:20px;
+margin-top:35px;
+flex-wrap:wrap;
 }
 
-.count-item{
-    text-align:center;
+.count-box h3{
+font-family:'Cormorant Garamond',serif;
+font-size:55px;
 }
 
-.count-item h3{
-    font-family:'Cormorant Garamond',serif;
-    font-size:60px;
-    font-weight:500;
-}
-
-.count-item span{
-    font-size:20px;
-    color:var(--soft);
+.count-box span{
+font-size:18px;
 }
 
 /* EVENT */
 
 .event-name{
-    font-family:'Cormorant Garamond',serif;
-    font-size:clamp(65px,10vw,110px);
-    margin-bottom:20px;
+font-family:'Cormorant Garamond',serif;
+font-size:clamp(60px,8vw,100px);
+margin-bottom:15px;
 }
 
-.event-date{
-    font-size:28px;
-    margin-bottom:10px;
+.location{
+font-size:32px;
+margin-top:20px;
 }
 
-.event-time{
-    font-size:22px;
-    margin-bottom:20px;
-    color:var(--soft);
+.address{
+font-size:20px;
+margin-top:10px;
+line-height:1.6;
 }
 
-.event-place{
-    font-family:'Cormorant Garamond',serif;
-    font-size:42px;
-    line-height:1.3;
+/* GALLERY */
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+margin-top:40px;
 }
 
-.event-address{
-    font-size:24px;
-    margin-top:8px;
-    color:var(--soft);
+.gallery img{
+width:100%;
+border-radius:20px;
 }
 
-/* BUTTON */
+/* FORM */
 
-.glass-btn{
-    margin-top:35px;
-    padding:16px 50px;
-    border-radius:999px;
-    border:1px solid rgba(255,255,255,.2);
-    background:rgba(255,255,255,.08);
-    backdrop-filter:blur(10px);
-    color:white;
-    font-size:18px;
-    cursor:pointer;
-    transition:.3s;
+input, textarea, select{
+width:100%;
+padding:15px;
+margin-bottom:15px;
+background:rgba(255,255,255,.08);
+border:none;
+border-radius:15px;
+color:white;
 }
 
-.glass-btn:hover{
-    background:rgba(255,255,255,.15);
+textarea{
+height:120px;
+resize:none;
 }
 
-/* MUSIC BUTTON */
+.comment-box{
+margin-top:30px;
+text-align:left;
+}
+
+.comment{
+background:rgba(255,255,255,.06);
+padding:20px;
+border-radius:15px;
+margin-bottom:15px;
+}
 
 .music-btn{
-    position:fixed;
-    right:25px;
-    bottom:25px;
-    width:55px;
-    height:55px;
-    border-radius:50%;
-    background:rgba(255,255,255,.08);
-    border:1px solid rgba(255,255,255,.1);
-    backdrop-filter:blur(10px);
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    cursor:pointer;
-    z-index:999;
-}
-
-/* REVEAL */
-
-.reveal{
-    opacity:0;
-    transform:translateY(50px);
-    transition:1s;
-}
-
-.reveal.active{
-    opacity:1;
-    transform:translateY(0);
-}
-
-@media(max-width:768px){
-
-.main-title{
-    font-size:62px;
-}
-
-.big-heading{
-    font-size:48px;
-}
-
-.text-block{
-    font-size:22px;
-}
-
-.count-item h3{
-    font-size:40px;
-}
-
-.event-name{
-    font-size:60px;
-}
-
-.event-place{
-    font-size:28px;
-}
-
+position:fixed;
+right:20px;
+bottom:20px;
+width:55px;
+height:55px;
+border-radius:50%;
+background:rgba(255,255,255,.1);
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+z-index:999;
 }
 
 </style>
 </head>
 <body>
 
-<!-- VIDEO -->
 <div class="video-background">
-<iframe
-src="https://www.youtube.com/embed/tmiynJuZt3w?autoplay=1&mute=1&controls=0&loop=1&playlist=tmiynJuZt3w&playsinline=1"
-frameborder="0"
-allow="autoplay">
-</iframe>
+<iframe src="https://www.youtube.com/embed/tmiynJuZt3w?autoplay=1&mute=1&controls=0&loop=1&playlist=tmiynJuZt3w"></iframe>
 </div>
 
 <div class="video-overlay"></div>
 
-<!-- PARTICLES -->
-<div class="particles">
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-    <span></span>
-</div>
-
 <!-- COVER -->
 <section>
-    <div class="container">
-        <div class="small-title">THE WEDDING OF</div>
-        <div class="main-title">Ricky & Puput</div>
-        <div class="date">11 OCTOBER 2026</div>
-    </div>
+<div class="container">
+<div class="small-title">THE WEDDING OF</div>
+<div class="main-title">PUPUT & RIKI</div>
+<div class="date">Minggu, 11 Oktober 2026</div>
+
+<p>Yth. Bapak/Ibu/Saudara/i</p>
+<h2>(Nama Yang Diundang)</h2>
+
+<p class="text">
+Tanpa mengurangi rasa hormat, kami mengundang anda untuk menghadiri acara pernikahan kami.
+</p>
+
+<button class="button" onclick="document.getElementById('page1').scrollIntoView()">BUKA UNDANGAN</button>
+</div>
 </section>
 
-<!-- AYAT -->
-<section class="reveal">
-    <div class="container">
-        <div class="small-title">THE WEDDING OF</div>
-        <div class="main-title">Ricky & Puput</div>
+<!-- PAGE 1 -->
+<section id="page1">
+<div class="section-bg" style="background-image:url('https://i.pinimg.com/736x/4f/4b/33/4f4b3355f716ded0c1b30be8aa712cae.jpg')"></div>
+<div class="container">
+<div class="small-title">THE WEDDING OF</div>
+<div class="main-title">PUPUT & RIKI</div>
+<div class="date">Minggu, 11 Oktober 2026</div>
 
-        <div class="text-block">
-            “Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya...”
-        </div>
+<p class="text">
+“Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri...”
+</p>
 
-        <div class="reference">Q.S Ar-Rum : 21</div>
-    </div>
+<div class="date" style="margin-top:25px;">Q.S Ar-Rum: 21</div>
+</div>
 </section>
 
-<!-- SAVE THE DATE -->
-<section class="reveal">
-    <div class="container">
-        <div class="big-heading">SAVE THE DATE</div>
+<!-- PAGE 2 -->
+<section>
+<div class="section-bg" style="background-image:url('https://static.republika.co.id/uploads/member/images/news/240417134203-911.jpeg')"></div>
+<div class="container">
+<div class="big-title">SAVE THE DATE</div>
 
-        <div class="text-block" style="font-size:24px;">
-            “Pernikahan adalah ibadah, dan setiap ibadah bermuara pada cinta-Nya sebagai tujuan.”
-        </div>
+<p class="text">
+“Pernikahan adalah ibadah, dan setiap ibadah bermuara pada cinta-Nya sebagai tujuan.”
+</p>
 
-        <div class="hero-countdown">
-            <div class="count-item">
-                <h3 id="days">00</h3>
-                <span>Hari</span>
-            </div>
+<div class="countdown">
+<div class="count-box"><h3 id="days">00</h3><span>Hari</span></div>
+<div class="count-box"><h3 id="hours">00</h3><span>Jam</span></div>
+<div class="count-box"><h3 id="minutes">00</h3><span>Menit</span></div>
+<div class="count-box"><h3 id="seconds">00</h3><span>Detik</span></div>
+</div>
 
-            <div class="count-item">
-                <h3 id="hours">00</h3>
-                <span>Jam</span>
-            </div>
+<button class="button">SIMPAN TANGGAL</button>
 
-            <div class="count-item">
-                <h3 id="minutes">00</h3>
-                <span>Menit</span>
-            </div>
-
-            <div class="count-item">
-                <h3 id="seconds">00</h3>
-                <span>Detik</span>
-            </div>
-        </div>
-
-        <button class="glass-btn">SIMPAN TANGGAL</button>
-    </div>
+<div style="margin-top:60px;">
+<div class="small-title">SAVE OUR DATE</div>
+<div class="event-name">AKAD</div>
+<div class="date">Minggu, 11 Oktober 2026 08.00 - 10.30 WIB</div>
+<div class="location">Masjid Nur Setiasih</div>
+</div>
+</div>
 </section>
 
-<!-- AKAD -->
-<section class="reveal">
-    <div class="container">
-        <div class="small-title">SAVE OUR DATE</div>
-        <div class="event-name">AKAD</div>
+<!-- PAGE 3 -->
+<section>
+<div class="container">
+<div class="small-title">SAVE OUR DATE</div>
+<div class="event-name">AKAD</div>
+<div class="date">Minggu, 11 Oktober 2026 08.00 - 10.30 WIB</div>
+<div class="address">Masjid Nur Setiasih Jl. Inspeksi Kalimalang No 32, Tambun Selatan, Bekasi</div>
+<button class="button">GOOGLE MAPS</button>
 
-        <div class="event-date">11 OCTOBER 2026</div>
-        <div class="event-time">08.00 - 10.30 WIB</div>
-
-        <div class="event-place">Gedung Serbaguna</div>
-        <div class="event-address">Bandung, Jawa Barat</div>
-
-        <button class="glass-btn">GOOGLE MAPS</button>
-    </div>
+<div style="margin-top:70px;">
+<div class="event-name">RESEPSI</div>
+<div class="date">Minggu, 11 Oktober 2026 11.00 - 16.00 WIB</div>
+<div class="address">Masjid Nur Setiasih Jl. Inspeksi Kalimalang No 32, Tambun Selatan, Bekasi</div>
+<button class="button">GOOGLE MAPS</button>
+</div>
+</div>
 </section>
 
-<!-- RESEPSI -->
-<section class="reveal">
-    <div class="container">
-        <div class="event-name">RESEPSI</div>
+<!-- PAGE 4 -->
+<section>
+<div class="container">
+<div class="small-title">JOURNEY OF LOVE</div>
+<div class="main-title">PUPUT & RIKI</div>
 
-        <div class="event-date">11 OCTOBER 2026</div>
-        <div class="event-time">11.00 - 15.00 WIB</div>
-
-        <div class="event-place">Gedung Serbaguna</div>
-        <div class="event-address">Bandung, Jawa Barat</div>
-
-        <button class="glass-btn">GOOGLE MAPS</button>
-    </div>
+<p class="text">
+Pada akhirnya, setiap perjalanan menemukan muaranya...
+<br><br>
+Di antara sekian banyak kemungkinan, Allah SWT mempertemukan kami...
+<br><br>
+Kini, dengan hati yang mantap...
+<br><br>
+Semoga langkah ini menjadi awal dari keberkahan yang panjang...
+</p>
+</div>
 </section>
 
-<!-- MUSIC -->
+<!-- PAGE 5 -->
+<section>
+<div class="container">
+<div class="big-title">OUR MOMENT</div>
+
+<p class="text">
+“I was created in time to fill your time, and I use all the time in my life to love you.”
+</p>
+
+<h3 style="margin-top:30px;">Photo Video by Puput & Riki</h3>
+
+<div class="gallery">
+<img src="https://picsum.photos/400/500?1">
+<img src="https://picsum.photos/400/500?2">
+<img src="https://picsum.photos/400/500?3">
+</div>
+
+<div style="margin-top:40px;">
+<iframe width="100%" height="400" src="https://www.youtube.com/embed/tmiynJuZt3w"></iframe>
+</div>
+</div>
+</section>
+
+<!-- PAGE 6 -->
+<section>
+<div class="container">
+<div class="big-title">RSVP & WISHES</div>
+
+<p class="text">
+Silahkan kirimkan konfirmasi kehadiran
+</p>
+
+<input type="text" id="name" placeholder="Nama">
+<select id="attendance">
+<option>Hadir</option>
+<option>Tidak Hadir</option>
+</select>
+<textarea id="message" placeholder="Doa & Ucapan"></textarea>
+
+<button class="button" onclick="saveComment()">KIRIM</button>
+
+<div class="comment-box" id="comments"></div>
+</div>
+</section>
+
+<!-- PAGE 7 -->
+<section>
+<div class="section-bg" style="background-image:url('https://i.pinimg.com/736x/77/f9/72/77f9727cdb0be79a03da0f6c14da63ec.jpg')"></div>
+<div class="container">
+<div class="big-title">WEDDING GIFT</div>
+
+<p class="text">
+Tanpa mengurangi rasa hormat bagi tamu yang ingin mengirimkan hadiah kepada kami
+</p>
+
+<button class="button">E-AMPLOP</button>
+</div>
+</section>
+
+<!-- PAGE 8 -->
+<section>
+<div class="section-bg" style="background-image:url('https://i.pinimg.com/474x/df/1e/48/df1e4802296d5f134b655b879657501a.jpg')"></div>
+<div class="container">
+<div class="big-title">THANK YOU FOR YOUR ATTENDANCE</div>
+
+<p class="text">
+Merupakan suatu kebahagiaan dan kehormatan bagi kami
+</p>
+
+<div class="main-title" style="margin-top:30px;">PUPUT & RIKI</div>
+</div>
+</section>
+
 <div class="music-btn" onclick="toggleMusic()">♫</div>
 
 <audio id="bgMusic" loop>
-    <source src="music/music.mp3" type="audio/mp3">
+<source src="music/music.mp3" type="audio/mp3">
 </audio>
 
 <script>
 
-/* MUSIC */
-
-const music = document.getElementById("bgMusic");
-let isPlaying = false;
-
-function toggleMusic(){
-    if(isPlaying){
-        music.pause();
-        isPlaying = false;
-    }else{
-        music.play();
-        isPlaying = true;
-    }
-}
-
-/* COUNTDOWN */
-
 const weddingDate = new Date("October 11, 2026 00:00:00").getTime();
 
-setInterval(() => {
-    const now = new Date().getTime();
-    const distance = weddingDate - now;
+setInterval(()=>{
+let now = new Date().getTime();
+let distance = weddingDate-now;
 
-    document.getElementById("days").innerHTML =
-        Math.floor(distance / (1000*60*60*24));
+document.getElementById('days').innerHTML=Math.floor(distance/(1000*60*60*24));
+document.getElementById('hours').innerHTML=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+document.getElementById('minutes').innerHTML=Math.floor((distance%(1000*60*60))/(1000*60));
+document.getElementById('seconds').innerHTML=Math.floor((distance%(1000*60))/1000);
 
-    document.getElementById("hours").innerHTML =
-        Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
-
-    document.getElementById("minutes").innerHTML =
-        Math.floor((distance % (1000*60*60)) / (1000*60));
-
-    document.getElementById("seconds").innerHTML =
-        Math.floor((distance % (1000*60)) / 1000);
 },1000);
 
-/* REVEAL */
+function saveComment(){
+let name=document.getElementById('name').value;
+let attendance=document.getElementById('attendance').value;
+let message=document.getElementById('message').value;
 
-const reveals = document.querySelectorAll('.reveal');
+let comments=JSON.parse(localStorage.getItem('comments'))||[];
+comments.push({name,attendance,message});
+localStorage.setItem('comments',JSON.stringify(comments));
 
-window.addEventListener('scroll', () => {
-    reveals.forEach(el => {
-        const top = el.getBoundingClientRect().top;
-        if(top < window.innerHeight - 100){
-            el.classList.add('active');
-        }
-    });
+renderComments();
+}
+
+function renderComments(){
+let comments=JSON.parse(localStorage.getItem('comments'))||[];
+let html='';
+
+comments.forEach(c=>{
+html+=`
+<div class="comment">
+<strong>${c.name}</strong> ✔️ <br>
+${c.message}<br>
+<small>${c.attendance}</small>
+</div>`;
 });
+
+document.getElementById('comments').innerHTML=html;
+}
+
+renderComments();
+
+let music=document.getElementById('bgMusic');
+let play=false;
+
+function toggleMusic(){
+if(play){
+music.pause();
+play=false;
+}else{
+music.play();
+play=true;
+}
+}
 
 </script>
 
