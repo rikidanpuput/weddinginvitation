@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,9 +7,16 @@
 <title>Ricky & Puput Wedding</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
+
+:root{
+    --white: rgba(255,255,255,.92);
+    --soft: rgba(255,255,255,.72);
+    --fade: rgba(255,255,255,.48);
+}
+
 *{
     margin:0;
     padding:0;
@@ -21,266 +28,348 @@ html{
 }
 
 body{
-    background:#000;
+    font-family:'Montserrat',sans-serif;
+    background:black;
     color:white;
-    font-family:'Cormorant Garamond',serif;
     overflow-x:hidden;
 }
 
+/* VIDEO BACKGROUND */
+
+.video-background{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    overflow:hidden;
+}
+
+.video-background iframe{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:100vw;
+    height:177.77vw;
+    min-width:56.25vh;
+    min-height:100vh;
+    transform:translate(-50%,-50%);
+    pointer-events:none;
+    filter:brightness(.35) contrast(1.05);
+}
+
+/* OVERLAY */
+
+.video-overlay{
+    position:fixed;
+    inset:0;
+    z-index:-2;
+    background:linear-gradient(
+        rgba(0,0,0,.35),
+        rgba(0,0,0,.75)
+    );
+}
+
+/* PARTICLES */
+
+.particles{
+    position:fixed;
+    inset:0;
+    z-index:-1;
+    overflow:hidden;
+}
+
+.particles span{
+    position:absolute;
+    width:3px;
+    height:3px;
+    border-radius:50%;
+    background:rgba(255,255,255,.1);
+    animation:float 15s linear infinite;
+}
+
+.particles span:nth-child(1){left:10%;}
+.particles span:nth-child(2){left:25%;}
+.particles span:nth-child(3){left:45%;}
+.particles span:nth-child(4){left:65%;}
+.particles span:nth-child(5){left:85%;}
+
+@keyframes float{
+    from{
+        transform:translateY(100vh);
+        opacity:0;
+    }
+    to{
+        transform:translateY(-10vh);
+        opacity:1;
+    }
+}
+
 /* SECTION */
+
 section{
     min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
     text-align:center;
-    position:relative;
-    padding:60px 25px;
+    padding:100px 25px;
 }
 
-/* BACKGROUND */
-.full-bg{
-    background-size:cover;
-    background-position:center;
-    background-repeat:no-repeat;
-}
-
-.full-bg::before{
-    content:'';
-    position:absolute;
-    inset:0;
-    background:rgba(0,0,0,.45);
-    z-index:1;
-}
-
-.content{
-    position:relative;
-    z-index:2;
-    max-width:900px;
+.container{
+    max-width:950px;
+    margin:auto;
 }
 
 /* TYPOGRAPHY */
+
 .small-title{
-    font-size:18px;
+    font-size:14px;
     letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--soft);
     margin-bottom:20px;
 }
 
-.big-title{
-    font-size:clamp(58px,10vw,110px);
-    line-height:1;
+.main-title{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(60px,10vw,120px);
     font-weight:500;
+    line-height:1;
     margin-bottom:20px;
 }
 
-.date-text{
+.date{
+    font-size:22px;
+    color:var(--soft);
+}
+
+.big-heading{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(52px,8vw,90px);
+    font-weight:500;
+    margin-bottom:25px;
+}
+
+.text-block{
+    font-family:'Cormorant Garamond',serif;
+    font-size:30px;
+    line-height:1.5;
+    color:var(--white);
+}
+
+.reference{
+    margin-top:25px;
     font-size:24px;
-    letter-spacing:2px;
-}
-
-.quote{
-    font-size:26px;
-    line-height:1.6;
-    margin-top:20px;
-}
-
-.verse{
-    font-size:24px;
-    line-height:1.7;
-    margin:30px 0;
-}
-
-.section-title{
-    font-size:clamp(50px,9vw,90px);
-    margin-bottom:20px;
+    color:var(--soft);
 }
 
 /* COUNTDOWN */
-.countdown{
+
+.hero-countdown{
+    margin-top:40px;
     display:flex;
     justify-content:center;
     gap:25px;
-    margin-top:40px;
     flex-wrap:wrap;
 }
 
-.count-box h3{
-    font-size:58px;
+.count-item{
+    text-align:center;
+}
+
+.count-item h3{
+    font-family:'Cormorant Garamond',serif;
+    font-size:60px;
     font-weight:500;
 }
 
-.count-box span{
+.count-item span{
     font-size:20px;
+    color:var(--soft);
 }
 
 /* EVENT */
-.event-title{
-    font-size:90px;
-    margin-bottom:15px;
+
+.event-name{
+    font-family:'Cormorant Garamond',serif;
+    font-size:clamp(65px,10vw,110px);
+    margin-bottom:20px;
 }
 
 .event-date{
     font-size:28px;
-    margin-bottom:12px;
+    margin-bottom:10px;
 }
 
 .event-time{
     font-size:22px;
     margin-bottom:20px;
+    color:var(--soft);
 }
 
-.location{
-    font-size:34px;
-    line-height:1.4;
+.event-place{
+    font-family:'Cormorant Garamond',serif;
+    font-size:42px;
+    line-height:1.3;
 }
 
-.address{
-    font-size:22px;
-    margin-top:10px;
+.event-address{
+    font-size:24px;
+    margin-top:8px;
+    color:var(--soft);
 }
 
 /* BUTTON */
+
 .glass-btn{
-    margin-top:30px;
-    padding:16px 45px;
-    border:none;
-    border-radius:40px;
-    background:rgba(255,255,255,.12);
-    backdrop-filter:blur(12px);
-    border:1px solid rgba(255,255,255,.25);
+    margin-top:35px;
+    padding:16px 50px;
+    border-radius:999px;
+    border:1px solid rgba(255,255,255,.2);
+    background:rgba(255,255,255,.08);
+    backdrop-filter:blur(10px);
     color:white;
     font-size:18px;
     cursor:pointer;
+    transition:.3s;
 }
 
-/* GALLERY */
-.gallery{
-    padding:80px 20px;
-    background:#0a0a0a;
+.glass-btn:hover{
+    background:rgba(255,255,255,.15);
 }
 
-.gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:18px;
-    margin-top:40px;
-}
+/* MUSIC BUTTON */
 
-.gallery-grid img{
-    width:100%;
-    height:400px;
-    object-fit:cover;
-}
-
-/* RSVP */
-.rsvp{
-    background:#050505;
-    padding:100px 20px;
-}
-
-.form-box{
-    max-width:650px;
-    margin:auto;
-}
-
-input, textarea, select{
-    width:100%;
-    padding:18px;
-    margin-bottom:15px;
-    background:rgba(255,255,255,.08);
-    border:none;
-    color:white;
-    font-family:inherit;
-}
-
-textarea{
-    min-height:140px;
-}
-
-/* FOOTER */
-footer{
-    padding:80px 20px;
-    text-align:center;
-    background:black;
-}
-
-footer h2{
-    font-size:55px;
-    margin-bottom:20px;
-}
-
-footer p{
-    font-size:22px;
-    line-height:1.7;
-    opacity:.8;
-}
-
-/* MUSIC */
 .music-btn{
     position:fixed;
-    bottom:25px;
     right:25px;
+    bottom:25px;
     width:55px;
     height:55px;
     border-radius:50%;
-    background:rgba(255,255,255,.15);
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.1);
+    backdrop-filter:blur(10px);
     display:flex;
     justify-content:center;
     align-items:center;
-    font-size:22px;
     cursor:pointer;
     z-index:999;
 }
+
+/* REVEAL */
+
+.reveal{
+    opacity:0;
+    transform:translateY(50px);
+    transition:1s;
+}
+
+.reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+@media(max-width:768px){
+
+.main-title{
+    font-size:62px;
+}
+
+.big-heading{
+    font-size:48px;
+}
+
+.text-block{
+    font-size:22px;
+}
+
+.count-item h3{
+    font-size:40px;
+}
+
+.event-name{
+    font-size:60px;
+}
+
+.event-place{
+    font-size:28px;
+}
+
+}
+
 </style>
 </head>
 <body>
 
+<!-- VIDEO -->
+<div class="video-background">
+<iframe
+src="https://www.youtube.com/embed/tmiynJuZt3w?autoplay=1&mute=1&controls=0&loop=1&playlist=tmiynJuZt3w&playsinline=1"
+frameborder="0"
+allow="autoplay">
+</iframe>
+</div>
+
+<div class="video-overlay"></div>
+
+<!-- PARTICLES -->
+<div class="particles">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
 <!-- COVER -->
-<section class="full-bg" style="background-image:url('cover.jpg')">
-    <div class="content">
+<section>
+    <div class="container">
         <div class="small-title">THE WEDDING OF</div>
-        <div class="big-title">Ricky &<br>Puput</div>
-        <div class="date-text">11 OCTOBER 2026</div>
+        <div class="main-title">Ricky & Puput</div>
+        <div class="date">11 OCTOBER 2026</div>
     </div>
 </section>
 
 <!-- AYAT -->
-<section class="full-bg" style="background-image:url('ayat.jpg')">
-    <div class="content">
+<section class="reveal">
+    <div class="container">
         <div class="small-title">THE WEDDING OF</div>
-        <div class="big-title">Ricky &<br>Puput</div>
+        <div class="main-title">Ricky & Puput</div>
 
-        <div class="verse">
-            “Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu merasa tenteram kepadanya, dan dijadikan-Nya di antaramu rasa kasih dan sayang.”
+        <div class="text-block">
+            “Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia menciptakan pasangan-pasangan untukmu dari jenismu sendiri, agar kamu cenderung dan merasa tenteram kepadanya...”
         </div>
 
-        <div class="date-text">Q.S Ar-Rum : 21</div>
+        <div class="reference">Q.S Ar-Rum : 21</div>
     </div>
 </section>
 
 <!-- SAVE THE DATE -->
-<section class="full-bg" style="background-image:url('save-date.jpg')">
-    <div class="content">
-        <div class="section-title">SAVE THE DATE</div>
+<section class="reveal">
+    <div class="container">
+        <div class="big-heading">SAVE THE DATE</div>
 
-        <div class="quote">
+        <div class="text-block" style="font-size:24px;">
             “Pernikahan adalah ibadah, dan setiap ibadah bermuara pada cinta-Nya sebagai tujuan.”
         </div>
 
-        <div class="countdown">
-            <div class="count-box">
+        <div class="hero-countdown">
+            <div class="count-item">
                 <h3 id="days">00</h3>
                 <span>Hari</span>
             </div>
-            <div class="count-box">
+
+            <div class="count-item">
                 <h3 id="hours">00</h3>
                 <span>Jam</span>
             </div>
-            <div class="count-box">
+
+            <div class="count-item">
                 <h3 id="minutes">00</h3>
                 <span>Menit</span>
             </div>
-            <div class="count-box">
+
+            <div class="count-item">
                 <h3 id="seconds">00</h3>
                 <span>Detik</span>
             </div>
@@ -291,78 +380,35 @@ footer p{
 </section>
 
 <!-- AKAD -->
-<section class="full-bg" style="background-image:url('akad.jpg')">
-    <div class="content">
+<section class="reveal">
+    <div class="container">
         <div class="small-title">SAVE OUR DATE</div>
-        <div class="event-title">AKAD</div>
+        <div class="event-name">AKAD</div>
 
         <div class="event-date">11 OCTOBER 2026</div>
         <div class="event-time">08.00 - 10.30 WIB</div>
 
-        <div class="location">Gedung Serbaguna</div>
-        <div class="address">Bandung, Jawa Barat</div>
+        <div class="event-place">Gedung Serbaguna</div>
+        <div class="event-address">Bandung, Jawa Barat</div>
 
         <button class="glass-btn">GOOGLE MAPS</button>
     </div>
 </section>
 
 <!-- RESEPSI -->
-<section class="full-bg" style="background-image:url('resepsi.jpg')">
-    <div class="content">
-        <div class="event-title">RESEPSI</div>
+<section class="reveal">
+    <div class="container">
+        <div class="event-name">RESEPSI</div>
 
         <div class="event-date">11 OCTOBER 2026</div>
         <div class="event-time">11.00 - 15.00 WIB</div>
 
-        <div class="location">Gedung Serbaguna</div>
-        <div class="address">Bandung, Jawa Barat</div>
+        <div class="event-place">Gedung Serbaguna</div>
+        <div class="event-address">Bandung, Jawa Barat</div>
 
         <button class="glass-btn">GOOGLE MAPS</button>
     </div>
 </section>
-
-<!-- GALLERY -->
-<section class="gallery">
-    <div class="content">
-        <div class="section-title">Gallery</div>
-
-        <div class="gallery-grid">
-            <img src="gallery1.jpg">
-            <img src="gallery2.jpg">
-            <img src="gallery3.jpg">
-            <img src="gallery4.jpg">
-        </div>
-    </div>
-</section>
-
-<!-- RSVP -->
-<section class="rsvp">
-    <div class="content">
-        <div class="section-title">RSVP & Wishes</div>
-
-        <div class="form-box">
-            <input type="text" placeholder="Nama">
-
-            <select>
-                <option>Konfirmasi Kehadiran</option>
-                <option>Hadir</option>
-                <option>Tidak Hadir</option>
-            </select>
-
-            <textarea placeholder="Tulis doa dan harapan..."></textarea>
-
-            <button class="glass-btn">Kirim</button>
-        </div>
-    </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-    <h2>Thank You</h2>
-    <p>
-        Merupakan suatu kehormatan dan kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir dan memberikan doa restu.
-    </p>
-</footer>
 
 <!-- MUSIC -->
 <div class="music-btn" onclick="toggleMusic()">♫</div>
@@ -372,36 +418,56 @@ footer p{
 </audio>
 
 <script>
+
+/* MUSIC */
+
+const music = document.getElementById("bgMusic");
+let isPlaying = false;
+
+function toggleMusic(){
+    if(isPlaying){
+        music.pause();
+        isPlaying = false;
+    }else{
+        music.play();
+        isPlaying = true;
+    }
+}
+
+/* COUNTDOWN */
+
 const weddingDate = new Date("October 11, 2026 00:00:00").getTime();
 
 setInterval(() => {
     const now = new Date().getTime();
     const distance = weddingDate - now;
 
-    document.getElementById('days').innerHTML =
-        Math.floor(distance / (1000 * 60 * 60 * 24));
+    document.getElementById("days").innerHTML =
+        Math.floor(distance / (1000*60*60*24));
 
-    document.getElementById('hours').innerHTML =
+    document.getElementById("hours").innerHTML =
         Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
 
-    document.getElementById('minutes').innerHTML =
+    document.getElementById("minutes").innerHTML =
         Math.floor((distance % (1000*60*60)) / (1000*60));
 
-    document.getElementById('seconds').innerHTML =
+    document.getElementById("seconds").innerHTML =
         Math.floor((distance % (1000*60)) / 1000);
-}, 1000);
+},1000);
 
-const music = document.getElementById("bgMusic");
-let playing = false;
+/* REVEAL */
 
-function toggleMusic(){
-    if(playing){
-        music.pause();
-    } else {
-        music.play();
-    }
-    playing = !playing;
-}
+const reveals = document.querySelectorAll('.reveal');
+
+window.addEventListener('scroll', () => {
+    reveals.forEach(el => {
+        const top = el.getBoundingClientRect().top;
+        if(top < window.innerHeight - 100){
+            el.classList.add('active');
+        }
+    });
+});
+
 </script>
 
 </body>
